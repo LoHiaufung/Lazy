@@ -16,12 +16,21 @@ double cn(int x, int n) {
 	return out;
 }
 
+// [begin , end] 
+double hgd(int x, int n, int M, int N) {
+	return  (cn(x, M) * cn(n-x, N -M) / cn(n, N));
+}
+
 int main() {
 	cout << "Hypergrometric Distribution Computer " << endl;
-	cout << "enter x, n, M, N:" << endl;
-	int x = 0, n = 0, M = 0, N = 0;
-	cin >> x >>  n >>  M >> N;
-	// cout << x << ' ' << n << ' ' << M << ' ' << N;
-	cout << "h(x;n, M, N) == " << (cn(x, M) * cn(n-x, N -M) / cn(n, N));
+	cout << "[begin, end] enter begin, end , n, M, N:" << endl;
+	int begin = 0, end = 0, n = 0, M = 0, N = 0;
+	cin >> begin >> end >>  n >>  M >> N;
+	
+	double sum = 0;
+	for (int i = begin; i <= end; i++) {
+		sum += hgd(i, n, M, N);
+	}
+	cout << "P(" << begin << " <= X <= " << end << ") == " << sum << endl;
 	return 0;
 }
